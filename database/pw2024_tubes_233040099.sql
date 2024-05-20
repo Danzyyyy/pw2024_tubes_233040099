@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 10, 2024 at 05:13 PM
+-- Generation Time: May 20, 2024 at 11:08 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -20,20 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `pw2024_tubes_233040099`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `admin`
---
-
-CREATE TABLE `admin` (
-  `id` int NOT NULL,
-  `username` varchar(55) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `status` enum('On','Off') NOT NULL,
-  `date_create` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -159,18 +145,14 @@ CREATE TABLE `users` (
   `status` enum('On','Off') NOT NULL,
   `date_create` datetime NOT NULL,
   `ref` varchar(100) NOT NULL,
-  `ref_by` varchar(100) NOT NULL
+  `ref_by` varchar(100) NOT NULL,
+  `role` tinyint(1) NOT NULL,
+  `email` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `admin`
---
-ALTER TABLE `admin`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `games`
@@ -216,12 +198,6 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT for dumped tables
 --
-
---
--- AUTO_INCREMENT for table `admin`
---
-ALTER TABLE `admin`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `games`
