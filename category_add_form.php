@@ -1,6 +1,6 @@
 <?php 
     include ('header.php');
-    // require ('DB_connection.php');
+    require ('functions.php');
 
  ?>
 <!DOCTYPE html>
@@ -22,7 +22,7 @@
 <body> 
     
     <!-- Background Image -->
-    <div style="background-image: url(img/4848691.jpg);">
+    <div style="background-color: #b29dca;;">
     
     <div class="row pt-5 pb-3 justify-content center" style="align-items: center;">
         

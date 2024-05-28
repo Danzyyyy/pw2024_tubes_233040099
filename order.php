@@ -7,14 +7,14 @@
 <body>
 
     
-    <div class="container-fluid bg-dark" style="padding-bottom: 100px;">
-        <div class="team-table bg-dark text-warning">
+    <div class="container-fluid " style="padding-bottom: 100px; background-color:#b29dca;">
+        <div class="team-table text-warning">
          <div class="title text-center mb-1">
              <h3 class= "font-weight bolder py-5">Pending Orders</h3>
          </div>
      
      <!-- Pending Order Table -->
-     <table class="table table-bordered text-center text-white">
+     <table class="table table-bordered text-center text-dark">
          <thead class="thead">
              <tr>
      
@@ -61,7 +61,7 @@
          </div>
 
          <!-- Confirm Order Table -->
-     <table class="table table-bordered text-center text-white">
+     <table class="table table-bordered text-center text-dark">
          <thead class="thead">
              <tr>
                  <th>ID</th>
@@ -77,8 +77,8 @@
          <tbody>
             
          <?php
-                     $sql= 'SELECT * FROM orders where status ="confirm"';
-                     $result = mysqli_query($conn, $sql); 
+                    $sql= 'SELECT * FROM orders where status ="confirm"';
+                    $result = mysqli_query($conn, $sql); 
 
                         while ($orders = mysqli_fetch_array($result)) {?>
                         <tr>

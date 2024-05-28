@@ -23,8 +23,8 @@
 <body>
     
    <!-- Category Manager -->
-  <div style="background: #000;">
-    <div class="container pb-5" style="background-color: #000;">
+  <div style="background-color: #b29dca;">
+    <div class="container pb-5">
 
         <div class="row justify-content-center pt-3 ">
             <h2 class="text-center pb-3 pt-3 text-white">Categories</h2>

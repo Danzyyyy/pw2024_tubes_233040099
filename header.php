@@ -53,8 +53,8 @@
                         
                     }
                 ?>    
-                <!-- <li class="nav-item"><a class="nav-link" href="Admin_login.php">Login</a></li> -->
-                <!-- <li class="nav-item"><a class="nav-link" href="">Contact Us</a></li> -->
+                <!-- <li class="nav-item"><a class="nav-link" href="Admin_login.php">Login</a></li>  -->
+                <li class="nav-item"><a class="nav-link" href="">Contact Us</a></li> 
             </ul>
           </div>
        

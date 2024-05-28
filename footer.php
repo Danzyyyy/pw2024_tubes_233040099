@@ -37,9 +37,9 @@
             </div>
             <div class="col-lg-5 pt-4 ">
                 <h4 class="pt-5 font-weight bolder text-center">About Us</h4>
-                <p><h5 class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores temporibus deserunt, dolorum corrupti blanditiis numquam rerum, consequuntur autem sapiente illo aliquid debitis porro ipsa nobis inventore quo sequi quibusdam minus.</h5></p>  
-                <p class="pt-1 pl-5 text-center" style="font-size: 9px"> Copyright © Premier Noobs - 2021 All Rights Reserved.  </p>
+                <p><h5 class="text-center">TMW Store hadir sebagai toko game terlengkap yang memenuhi kebutuhan para gamer di era digital ini. Kami menawarkan berbagai macam game untuk berbagai platform, mulai dari PC, konsol, hingga mobile.</h5></p>  
             </div>
+            <p class="pt-1 pl-5 text-center" style="font-size: 9px"> Copyright © TMW Store - 2024 All Rights Reserved.  </p>
             <div class="col-lg-1">
     
                 

@@ -3,18 +3,18 @@
     require ('functions.php');
 
  ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <!-- <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Demo</title>
-   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous"> -->      
-    
-    
- <style>
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script> -->
+      
+    
+<style>
 .login-box {
     margin-top: 75px;
     height: auto;
@@ -140,52 +140,58 @@ label {
 
 </head>
 <body>
-      
-      <!-- Admin Login Page -->
-    <div class="" style="background-color: #222D32; padding-bottom: 100px;">
+    
+    <!-- Add Admin Form -->
+    <div class="pb-5" style="background-color: #222D32; padding-bottom: 50px;">
         <div class="row">
             <div class="col-lg-3 col-md-2"></div>
             <div class="col-lg-6 col-md-8 login-box">
                 <div class="col-lg-12 login-title">
-                    ADMIN LOGIN
-                    <div class="text-center pt-5 text-danger ">
-                        <!-- catche error --> 
-                        <h3><?php 
-                            if (isset($_GET["error"])) {
-                                if ($_GET["error"]== "usernameexist") {
-                                    echo 'Username does not exist!!!';
-                                }
-                                elseif ($_GET["error"]== "wrongpassword") {
-                                    echo 'Passward does not match!!!';
-                                }
-                            }
-        
-                         ?></h3>
-                    </div>
+                    ADD ADMIN
+                <div class="text-center pt-5 text-danger ">
+                <h3><!-- catche error -->
+                    <?php  
+                    if (isset($_GET["error"])) {
+                        if ($_GET["error"]== "passwardMissMatch") {
+                            echo 'Passward does not match!!!';
+                        }
+                        elseif ($_GET["error"]== "uernameexist") {
+                            echo 'Username id allready exist!!!';
+                        }
+                    }
+
+                 ?></h3>
+                </div>
                 </div>
 
                 <div class="col-lg-12 login-form">
                     <div class="col-lg-12 login-form">
-                        <form action="Admin_login_backend.php" method="post">
+                        <form action="Admin_signup_backend.php" method="post">
+                            <div class="form-group">
+                                <label class="form-control-label">FULLNAME</label>
+                                <input type="text" name="fullname" class="form-control">
+                            </div>
                             <div class="form-group">
                                 <label class="form-control-label">USERNAME</label>
-                                <input type="text" name="username" id="username" class="form-control">
+                                <input type="text" name="username" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label class="form-control-label">PASSWORD</label>
-                                <input type="password" name="password" id="password" class="form-control" i>
+                                <input type="password" name="password" class="form-control">
                             </div>
-
+                            <div class="form-group">
+                                <label class="form-control-label">CONFIRM PASSWORD</label>
+                                <input type="password" name="repeat_password" class="form-control">
+                            </div>
                             <div class="col-lg-12 loginbttm">
                                 <div class="col-lg-6 login-btm login-text">
                                     <!-- Error Message -->
                                 </div>
                                 <div class="col-lg-6 login-btm login-button pt-2" style="margin-left: 30px;">
-                                    <button type="submit" name="login" class="btn btn-outline-primary">LOGIN</button>
+                                    <button type="submit" name="signup" class="btn btn-outline-primary">ADD</button>
                                 </div>
                             </div>
                         </form>
-                        
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-2"></div>
@@ -193,9 +199,16 @@ label {
         </div>
     </div>
 
+ 
+    
+    
+    
+
+
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script> -->
 
-<!-- Footer Added -->
+
+ <!-- Footer Added  -->
 <?php 
     include ('footer.php');
  ?>

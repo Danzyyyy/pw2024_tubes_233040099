@@ -1,7 +1,7 @@
 <?php 
     include ('header.php');
     require ('functions.php');
-    $category = query('SELECT * FROM category ;')[0];
+
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,62 +26,74 @@
 
 <body> 
     
-
-    <!--Backround Image  -->
- <div style="background-color:#b29dca ;">
+    <!-- Background Img -->
+    <div style="background-image: url(img/4848691.jpg);">
     
     <div class="row pt-5 pb-3 justify-content center" style="align-items: center;">
         
-        <!-- Category Update Form -->
+        <!-- Update Game Form -->
+        
         <div class="col-lg-12" style="align-items: center;">
-            <div class="container" style="border: #000 solid; width: 700px; height: 550px; background: #252525b8;">
+            <div class="container" style="border:#000 solid; width: 700px; height: 800px; background: #252525b8;">
                
                 <div class="contact-form p-3">
                     <div class="title text-center mb-3 pt-4 text-white">
-                        <h3 class="font-weight bolder">Category Update</h3>
+                        <h3 class="font-weight bolder">Update Game</h3>
                     </div>
-                    <form action="category_manager_backend.php" class="m-auto bold-txt text-white" method="post" enctype="multipart/form-data">
+                    <form action="Games_manager_backend.php" class="m-auto bold-txt text-white" method="post" enctype="multipart/form-data">
+                        <?php
+                    $sql= "SELECT * FROM games WHERE id ='$_GET[id]';";
+                    $result = mysqli_query($conn, $sql); 
+
+                        while ($games = mysqli_fetch_array($result)) {?>
                         <div class="form-group pt-5">
                             <label for="title">Title</label>
-                            <input type="text" class="form-control" name="title" id="title" value="<?= $category['title']; ?>">
-                            <input type="text" class="form-control" name="oldtitle" value="<?= $category['title']; ?>" hidden>
+                            <input type="text" class="form-control" name="title" id="title" value="<?php echo $games['title']; ?>">
                         </div>
-
-                        <input type="text" name="category_id" value="<?= $_GET['id']; ?>" hidden>
-
+                        <input type="text" name="game_id" value="<?php echo $_GET['id']; ?>" hidden>
                         <div class="form-group pt-5">
-                            <label for="image">Update Category Image: </label>
+                            <label for="image">Update Image: </label>
                              <input type="file" class="form-control-file" id="image" name="image" required>
                         </div>
 
+                        <div class="form-group pt-5">
+                            <label for="description">Description</label>
+                            <input type="text" class="form-control" id="description" name="description" value="<?php echo $games['description']; ?>">
+                        </div>
 
+                        <div class="form-group pt-5">
+                            <label for="price">Price</label>
+                            <input type="number" class="form-control" name="price" id="price" min="0" value="<?php echo $games['price']; ?>">
+                        </div>
 
-                        <!-- Active & featured buttons -->
+                        <!-- Active & exclusive buttons -->
                         <div class="form-group pt-5 m-2">
                             <label for="location">Active </label>
                             <div class="form-check form-check-inline">
-                              <input class="form-check-input" type="radio" name="active" id="active1" value="true" value="<?= $category['active']; ?>">
+                              <input class="form-check-input" type="radio" name="active" id="active1" value="true" value="<?php echo $games['active']; ?>">
                               <label class="form-check-label" for="active1">Yes</label>
                             </div>
                             <div class="form-check form-check-inline">
-                              <input class="form-check-input" type="radio" name="active" id="active2" value="false" value="<?= $category['active']; ?>">
+                              <input class="form-check-input" type="radio" name="active" id="active2" value="false" value="<?php echo $games['active']; ?>">
                               <label class="form-check-label" for="active2">No</label>
                             </div>
                         </div>
 
                         <div class="form-group pt-3 m-2">
-                            <label for="location">Featured </label>
+                            <label for="location">Exclusive </label>
                             <div class="form-check form-check-inline">
-                              <input class="form-check-input" type="radio" name="featured" id="featured" value="true" value="<?= $category['active']; ?>">
-                              <label class="form-check-label" for="featured">Yes</label>
+                              <input class="form-check-input" type="radio" name="exclusive" id="exclusive1" value="true" value="<?php echo $games['exclusive']; ?>">
+                              <label class="form-check-label" for="exclusive1">Yes</label>
                             </div>
                             <div class="form-check form-check-inline">
-                              <input class="form-check-input" type="radio" name="featured" id="featured" value="false" value="<?= $category['featured']; ?>">
-                              <label class="form-check-label" for="featured">No</label>
+                              <input class="form-check-input" type="radio" name="exclusive" id="exclusive2" value="false" value="<?php echo $games['exclusive']; ?>">
+                              <label class="form-check-label" for="exclusive2">No</label>
                             </div>
                         </div>
 
+                        <?php }?> 
             
+                </div>
 
                         <div class="form-group text-center pt-5 bold-txt">
                             <button type="submit" name="update" class="frm-btn btn btn-warning text-center"> Confirm </button>

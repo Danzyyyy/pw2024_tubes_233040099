@@ -12,7 +12,7 @@ $games = query("SELECT * FROM games");
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
     
     <link rel="stylesheet" href="css/responsive.css">
-    
+    <!-- <link rel="stylesheet" href="css/search.css"> -->
     <link rel="stylesheet" href="css/font.css">
   </head>
   <body>
@@ -50,7 +50,7 @@ $games = query("SELECT * FROM games");
         <div class="container text-white">
             <div class="row">
                 <div class="col-12 text-center">
-                    <h1>Popular <span class="text-warning"> Games</span></h1>
+                    <h1>Popular <span class="text" style="color:#cc462b;"> Games</span></h1>
                 </div>
             </div>
 
@@ -75,34 +75,35 @@ $games = query("SELECT * FROM games");
     </div>
     <!-- End Content popular games -->
 
-    <!-- Content Top Up all Games -->
+    <!-- Search Games -->
     <div class="container-fluid py-5" style="background-color: #b29dca">
         <div class="container text-white">
             <div class="row">
                 <div class="col-12  text-center">
-                    <h1>Top Up All <span class="text-warning">Games</span></h1>
+                    <h1>Search <span class="text" style="color:#cc462b;">Games</span></h1>
                     <p class="text-secondary">Cari game kesayangan mu!</p>
                 </div>
-                <div class="col-12">
-                    <form class="form-inline">
-                        <div class="input-group">
-                          <input type="text" class="form-control" placeholder="Search">
-                          <div class="input-group-append">
-                            <button class="btn btn-warning" type="button">
-                                <i class="bi bi-search"></i>
-                            </button>
+                <div class="col-12 form-container">
+                  <form action="search.php" class="form-inline" method="POST"> 
+                          <div class="input-group">
+                            <input type="text" name="search" class="form-control" placeholder="Search">
+                            <div class="input-group-append">
+                              <button class="btn" name="searchbt" type="button" style="background-color: #cc462b;">
+                                  <i class="bi bi-search"></i>
+                              </button>
+                            </div>
                           </div>
-                        </div>
-                    </form>
+                      </form> 
+                  </div>
                 </div>
-            </div>
-
+              </div>
             <div class="row mt-3 text-center">
               <?php foreach ($games as $game) : ?>
                 <div class="col-lg-2 col-sm-4 col-4 mt-4">
                     <img src="asset/img/game/<?= $game['image'] ?>" style="height: 170px; width:100%; border-radius: 12px;" >
                     <h5 class="mt-2"><?= $game['title']?></h5>
-                    <a href="page/mobile_legend.php" class="btn btn-warning"><i class="bi bi-cart"></i>Browse</a>
+                    <h2 class="mt-2"><?= $game['price']?> Rupiah</h2>
+                    <a href="order_form.php" class="btn" style="background-color:#cc462b;"><i class="bi bi-cart"></i>Browse</a>
                 </div>
                 <?php endforeach; ?>
             </div>

@@ -31,7 +31,7 @@
                 <?php
                         foreach ($category as $ctg) {?>
                             <div class="col-lg-4 pb-4">
-                               <div class="card bg-dark text-white" style="border: black 100px;">
+                               <div class="card text-white" style="border: black 100px; background-color: #61446c;">
                                   <img class="card-img-top" src="asset/img/game/<?= $ctg['image'] ?>" alt="" style="width: 100%; height:350px;">
                                   <div class="card-body">
                                      <h3 class="card-title text-center"><?= " $ctg[title] "; ?></h3>
