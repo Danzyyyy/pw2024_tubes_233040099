@@ -32,7 +32,7 @@
                         while ($games = mysqli_fetch_array($result)) {?>
                             <div class="col-lg-4 pb-4">
                                <div class="card text-white card-fix" style="background-color:#61446c">
-                                  <img class="card-img-top" src="asset/img/game<?= $games['image'] ?>" alt="" style="width: 100%; height:350px;">
+                                  <img class="card-img-top" src="asset/img/game/<?= $games['image'] ?>" alt="" style="width: 100%; height:350px;">
                                   <div class="card-body">
                                      <h3 class="card-title text-center"><?= " $games[title] "; ?></h3>
                                      <p><?= " $games[description] "; ?></p>

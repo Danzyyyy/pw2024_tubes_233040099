@@ -89,7 +89,7 @@ function upload() {
   $namaFileBaru .= $ekstensiGambar;
 
   // Lolos pengecekan, gambar siap diupload
-  move_uploaded_file($tmpName, 'img/' . $namaFileBaru);
+  move_uploaded_file($tmpName, 'asset/img/' . $namaFileBaru);
 
   return $namaFileBaru;
 }

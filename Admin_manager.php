@@ -35,9 +35,9 @@
 
                         while ($admins = mysqli_fetch_array($result)) {?>
                         <tr>
-                            <td class="p-3"><?php echo "$admins[id]"; ?></td>
-                            <td class="p-3"><?php echo "$admins[full_name]";?></td>
-                            <td class="p-3"><?php echo "$admins[username]";?></td>
+                            <td class="p-3"><?= "$admins[id]"; ?></td>
+                            <td class="p-3"><?= "$admins[full_name]";?></td>
+                            <td class="p-3"><?= "$admins[username]";?></td>
                             <td class="float-left">
                                 <a class="btn btn-outline-danger" href="Admin_delete.php?id=<?php echo $admins['id']; ?>">Delete Admin</a>
                              </td>
@@ -79,8 +79,8 @@
 
                         while ($games = mysqli_fetch_array($result)) {?>
                             <tr>
-                                <td class="p-3"><?php echo "$games[title]"; ?></td>
-                                <td class="p-3"><?php echo "$games[total_sell]"; ?></td>
+                                <td class="p-3"><?= "$games[title]"; ?></td>
+                                <td class="p-3"><?= "$games[total_sell]"; ?></td>
                                  <td class="p-3"><?php $sell = $games['total_sell']*$games['price']; $total_sell+=$sell; echo $sell; ?></td>
                             </tr>
                 <?php 
@@ -92,7 +92,7 @@
                 <div class="row">
                 <div class= col-lg-4></div>     
                 <div class= col-lg-4>
-                <div class="text-center text-warning pt-5"><h5 class="p-4" style="border: 2px solid white">Total Earnings: <?php echo $total_sell; ?> Taka </h5> </div>
+                <div class="text-center text-warning pt-5"><h5 class="p-4" style="border: 2px solid white">Total Earnings: <?= $total_sell; ?> Rupiah </h5> </div>
                 </div>
                 </div>    
                 <div class= col-lg-4>

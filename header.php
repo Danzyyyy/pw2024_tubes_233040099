@@ -41,6 +41,7 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active"><a class="nav-link" href="index.php">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="category.php">Category</a></li>
+                <li class="nav-item"><a class="nav-link" href="Games.php">Games</a></li> 
                 <?php
                     if (isset($_SESSION['username'])){
                         echo '<li class="nav-item"><a class="nav-link" href="order.php">Order</a></li>';
@@ -54,7 +55,6 @@
                     }
                 ?>    
                 <!-- <li class="nav-item"><a class="nav-link" href="Admin_login.php">Login</a></li>  -->
-                <li class="nav-item"><a class="nav-link" href="">Contact Us</a></li> 
             </ul>
           </div>
        

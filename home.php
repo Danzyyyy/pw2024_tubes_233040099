@@ -103,17 +103,13 @@ $games = query("SELECT * FROM games");
                     <img src="asset/img/game/<?= $game['image'] ?>" style="height: 170px; width:100%; border-radius: 12px;" >
                     <h5 class="mt-2"><?= $game['title']?></h5>
                     <h2 class="mt-2"><?= $game['price']?> Rupiah</h2>
-                    <a href="order_form.php" class="btn" style="background-color:#cc462b;"><i class="bi bi-cart"></i>Browse</a>
+                    <a href="order_form.php?title=<?= $game['title'] ?>&price=<?= $game['price'] ?>" class="btn" style="background-color:#cc462b"><i class="bi bi-cart"></i>Browse</a>
                 </div>
                 <?php endforeach; ?>
             </div>
         </div>
     </div>
     <!-- End Content top up all games -->
-
-    <!-- Footer -->
-    <!-- End footer -->
-
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </html>

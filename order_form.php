@@ -57,7 +57,6 @@
                         </div>
                             <input type="text" class="form-control" name="game_id" id="game_id" value="<?= $_GET['title']; ?>" hidden>
                             <input type="number" class="form-control" name="price" id="price" value="<?= $_GET['price']; ?>" hidden>
-                        </div>
 
                         <div class="form-group text-center pt-5 bold-txt">
                             <button type="submit" name="submit" class="frm-btn btn btn-warning text-center"> Confirm </button>
