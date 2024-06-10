@@ -1,8 +1,8 @@
 <?php 
+session_start();
     include ('includes/header.php');
-    include ('includes/functions.php');
+    include ('../functions.php');
 
-    $conn = koneksi();
 
     $category_id = $_GET['id'];
     $games = query("SELECT *, games.title AS gms_title, games.image AS gms_img, category.title AS ctg_title FROM games JOIN category ON category_id = category.id WHERE category_id = $category_id;");
@@ -66,7 +66,7 @@
 
 <!-- Footer Added -->
 <?php 
-    require ('includes/footer.php');
+    require ('../footer.php');
  ?>
 
 </body>

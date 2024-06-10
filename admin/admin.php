@@ -28,19 +28,22 @@ $games = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM games"));
   </div>
 </div>
 
-    <div class="card">
+    <div class="card" >
       <div class="card-body">
         <h5 class="card-title">Games</h5>
         <p class="card-text">Klik link untuk mengedit dan menambah games.</p>
         <a href="Games.php" class="btn btn-primary">Check Details</a>
       </div>
     </div>
-  </div>
-  </div>
-</div>
-
-    <div class="card">
-      <div class="card-body">
+    <div class="card" style="width: 18rem;">
+      <div class="card-body" style="width: 18rem;">
+        <h5 class="card-title">Order Management</h5>
+        <p class="card-text">Klik link untuk melihat orderan.</p>
+        <a href="order.php" class="btn btn-primary">Check Details</a>
+      </div>
+    </div>
+    <div class="card" style="width: 18rem;">
+      <div class="card-body" style="width: 18rem;">
         <h5 class="card-title">Order Management</h5>
         <p class="card-text">Klik link untuk melihat orderan.</p>
         <a href="order.php" class="btn btn-primary">Check Details</a>

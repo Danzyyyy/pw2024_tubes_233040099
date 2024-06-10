@@ -1,7 +1,17 @@
 <?php
-session_start();
 require 'functions.php';
 $games = query("SELECT * FROM games");
+
+//sorting
+if(isset($_POST["sort"])){
+  if($_POST["sort"] === "old"){
+  $games = query("SELECT * FROM games ORDER BY id ASC");
+  }
+  if($_POST["sort"] === "new"){
+  $games = query("SELECT * FROM games ORDER BY id DESC");
+  }
+}
+//akhir sorting
 ?>
 
 <!doctype html>
@@ -45,38 +55,19 @@ $games = query("SELECT * FROM games");
     </div>
     <!-- End Carousel banner event -->
 
-    <!-- Content Popular Games -->
-    <div class="container-fluid py-3" style="background-color: #b29dca">
-        <div class="container text-white">
-            <div class="row">
-                <div class="col-12 text-center">
-                    <h1>Popular <span class="text" style="color:#cc462b;"> Games</span></h1>
-                </div>
-            </div>
-
-            <div class="row text-center">
-                <div class="col-lg-2 offset-lg-3 mt-4  col-sm-4 col-4">
-                  <div class="wrapper">
-                    <img src="asset/img/game/mobile-legend.png" style="height: 170px; width:100%; border-radius: 12px;" >
-                  </div>
-                </div>
-                <div class="col-lg-2 mt-4 col-sm-4 col-4">
-                  <div class="wrapper">
-                    <img src="asset/img/game/free-fire-logo.jpg" class="img-fluid" style="height: 170px; width:100%; border-radius: 12px;" >
-                  </div>
-                </div>
-                <div class="col-lg-2 mt-4 col-sm-4 col-4">
-                  <div class="wrapper">
-                    <img src="asset/img/game/pubg.png" class="img-fluid" style="height: 170px; width:100%; border-radius: 12px;" >
-                  </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Content popular games -->
-
     <!-- Search Games -->
     <div class="container-fluid py-5" style="background-color: #b29dca">
+    <form action="" method="POST" class="mt-5">
+            <select id="sort" name="sort" onchange="this.form.submit();">
+               <?php if($_POST["sort"] === "old") : ?>
+               <option value="new">NEW</option>
+               <option value="old" selected>OLD</option>
+               <?php else : ?>
+               <option value="new" selected>NEW</option>
+               <option value="old">OLD</option>
+               <?php endif ; ?>
+               </select>
+            </form>
         <div class="container text-white">
             <div class="row">
                 <div class="col-12  text-center">
@@ -86,7 +77,7 @@ $games = query("SELECT * FROM games");
                 <div class="col-12 form-container">
                   <form action="search.php" class="form-inline" method="POST"> 
                           <div class="input-group">
-                            <input type="text" name="search" class="form-control" placeholder="Search">
+                            <input type="text" name="search" class="form-control" placeholder="Search" id="keyword">
                             <div class="input-group-append">
                               <button class="btn" name="searchbt" type="button" style="background-color: #cc462b;">
                                   <i class="bi bi-search"></i>
@@ -97,7 +88,7 @@ $games = query("SELECT * FROM games");
                   </div>
                 </div>
               </div>
-            <div class="row mt-3 text-center">
+            <div class="row mt-3 text-center" id="container">
               <?php foreach ($games as $game) : ?>
                 <div class="col-lg-2 col-sm-4 col-4 mt-4">
                     <img src="asset/img/game/<?= $game['image'] ?>" style="height: 170px; width:100%; border-radius: 12px;" >
@@ -111,4 +102,6 @@ $games = query("SELECT * FROM games");
     <!-- End Content top up all games -->
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+<script src="js/jquery-3.7.1.min.js"></script>
+<script src="js/ajax.js"></script>
 </html>

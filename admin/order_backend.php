@@ -1,5 +1,5 @@
 <?php 
-	include "includes/functions.php";
+	include "../functions.php";
 	//insertion of an order but with the status "pending"
 if (isset($_POST['submit'])) {
 	$name = $_POST['name'];

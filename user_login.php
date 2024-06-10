@@ -24,6 +24,11 @@
                 <div class="col-lg-12 login-title">
                     USER LOGIN
                     <div class="text-center pt-5 text-danger ">
+                        <!-- catche error --> 
+                        <h3><?php 
+                            if(isset($login['error'])) : ?>
+                                <p><?= $login['message'] ?></p>
+                            <?php endif; ?>
                     </div>
                 </div>
 

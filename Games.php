@@ -35,18 +35,17 @@
                                   <img class="card-img-top" src="asset/img/game/<?= $gm['image'] ?>" alt="" style="width: 100%; height:350px;">
                                   <div class="card-body">
                                      <h3 class="card-title text-center"><?=  $gm['title'] ?></h3>
-                                     <div class= "text-center pt-2 pb-1"><a href="subcategory.php?id=<?= $gm['id'] ?>"><button type="button" class="btn btn-info">Browse</button></a></div>
+                                     <div class= "text-center pt-2 pb-1"><a href="order_form.php?title=<?= $gm['title'] ?>&price=<?= $gm['price'] ?>"><button type="button" class="btn btn-info">Browse</button></a></div>
                                   </div>
                                </div>
                             </div>  
                         <?php } ?>
          </div>
+         <div class="text-center pt-5 pb-3"><a class="btn btn-warning btn-lg" href="index.php">GO TO HOME</a></div>
     </div>
  </div>
     
 
-
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script> -->
 
 
 <!-- Footer Added -->

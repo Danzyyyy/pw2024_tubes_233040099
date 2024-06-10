@@ -1,16 +1,21 @@
 <?php 
+session_start();
     include ('includes/header.php');
-    require ('includes/functions.php');
+    require ('../functions.php');
 
-    if(isset($_POST['add'])){
-        if(tambah($_POST) > 0) {
+    $games = query("SELECT * FROM games");
+
+    if (isset($_POST['add'])){
+        if(tambah_games($_POST)>0){
             echo "<script>
-                    alert('data berhasil ditambahkan');
-                    </script>";
+                    alert('Data Berhasil Ditambahkan');
+                    document.location.href = 'Games_manager.php';
+                </script>";
         } else {
             echo "<script>
-                    alert('data gagal ditambahkan');
-                    </script>";
+                    alert('Data Gagal Ditambahkan');
+                    document.location.href = 'Games_manager.php';
+                </script>";
         }
     }
  ?>
@@ -50,7 +55,7 @@
                     <div class="title text-center mb-3 pt-4 text-white">
                         <h3 class="font-weight bolder">Add Game</h3>
                     </div>
-                    <form action="Games_manager_backend.php" class="m-auto bold-txt text-white" method="post" enctype="multipart/form-data">
+                    <form action="" class="m-auto bold-txt text-white" method="post" enctype="multipart/form-data">
                         
                         <div class="form-group pt-5">
                             <label for="title">Title</label>
@@ -58,8 +63,8 @@
                         </div>
 
                         <div class="form-group pt-5">
-                             <label class="my-1 mr-2" for="category">Category </label>
-                             <select class="custom-select my-1 mr-sm-2" id="category" name="category">
+                             <label class="my-1 mr-2" for="category">Category</label>
+                             <select class="custom-select my-1 mr-sm-2" id="category" name="category_id">
                              <option selected>Choose...</option>
                              <!-- shows the category that are available in the category list -->
                              <?php
@@ -131,7 +136,7 @@
 
 <!-- Footer Added -->
 <?php 
-    include ('includes/footer.php');
+    include ('../footer.php');
  ?>
 
 </body>

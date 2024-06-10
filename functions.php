@@ -16,24 +16,114 @@ function query($query){
 function tambah($data)
 {
 
-    global $conn;
-  $nama = htmlspecialchars($data['nama']);
-  $nim = htmlspecialchars($data['nim']);
-  $email = htmlspecialchars($data['email']);
-  $jurusan = htmlspecialchars($data['jurusan']);
+global $conn;
+  $title = htmlspecialchars($data['title']);
+  $active = $data['active'];
+  $featured = $data['featured'];
   
   //Upload gambar
   $gambar = upload();
   if(!$gambar) {
       return false;
   }
-  $query = "INSERT INTO mahasiswa 
-              VALUES (null, '$nama', '$nim', '$email', '$jurusan')";
+  $query = "INSERT INTO category 
+              VALUES (null, '$title', '$gambar', '$active', '$featured')";
 
 mysqli_query($conn, $query) or die(mysqli_error($conn));
 
 return mysqli_affected_rows($conn);
 }
+function tambah_games($data)
+{
+
+global $conn;
+  $title = htmlspecialchars($data['title']);
+  $description = htmlspecialchars($data['description']);
+  $price = $data['price'];
+  $category_id = $data['category_id'];
+  $active = $data['active'];
+  $exclusive = $data['exclusive'];
+  $total_sell = 0;
+  //Upload gambar
+  $gambar = upload();
+  if(!$gambar) {
+      return false;
+  }
+  $query = "INSERT INTO games 
+              VALUES (null, '$title', '$description', '$price', '$gambar', '$category_id', '$total_sell', '$active', '$exclusive')";
+mysqli_query($conn, $query) or die(mysqli_error($conn));
+
+return mysqli_affected_rows($conn);
+}
+
+function update($data)
+{
+  global $conn;
+
+    $id = $data['id'];
+    $title = htmlspecialchars ($data['title']);
+    $active = $data['active'];
+    $featured = $data['featured'];
+    $old_image = $data['old_image'];
+
+    if( $_FILES['image']['error'] === 4) {
+        $image = $old_image;
+    } else {
+        $image = upload();
+    } 
+    
+      $query="UPDATE category SET
+                title ='$title', 
+                active ='$active', 
+                featured ='$featured', 
+                image ='$image' 
+              WHERE id = $id
+              ";
+    
+      mysqli_query($conn, $query);
+      echo mysqli_error($conn);
+      return mysqli_affected_rows($conn);
+    }
+function update_games($data)
+{
+  global $conn;
+
+    $id = $data['id'];
+    $title = htmlspecialchars ($data['title']);
+    $active = $data['active'];
+    $exclusive = $data['exclusive'];
+    $old_image = $data['old_image'];
+
+    if( $_FILES['image']['error'] === 4) {
+        $image = $old_image;
+    } else {
+        $image = upload();
+    } 
+    
+      $query="UPDATE games SET
+                title ='$title', 
+                active ='$active', 
+                exclusive ='$exclusive', 
+                image ='$image'
+              WHERE id = $id
+              ";
+    
+      mysqli_query($conn, $query);
+      echo mysqli_error($conn);
+      return mysqli_affected_rows($conn);
+    }
+
+
+    function hapus($id){
+        global $conn;
+        mysqli_query($conn, "DELETE category, games FROM category JOIN games ON category_id = category.id WHERE category.id = $id") or die(mysqli_error($conn));
+        return mysqli_affected_rows($conn);
+      }
+    function hapus_games($id){
+        global $conn;
+        mysqli_query($conn, "DELETE FROM games WHERE id = $id") or die(mysqli_error($conn));
+        return mysqli_affected_rows($conn);
+      }
 
 function registration($data) {
     global $conn;
@@ -95,7 +185,7 @@ function upload() {
   // Cek jika ukurannya terlalu besar
   if( $ukuranFile > 1000000) {
       echo "<script>
-              alert('Uuran gambar terlalu besar!');
+              alert('Ukuran gambar terlalu besar!');
           </script>";
       return false;
   }
@@ -106,7 +196,7 @@ function upload() {
   $namaFileBaru .= $ekstensiGambar;
 
   // Lolos pengecekan, gambar siap diupload
-  move_uploaded_file($tmpName, 'asset/img/' . $namaFileBaru);
+  move_uploaded_file($tmpName, '../asset/img/game/' . $namaFileBaru);
 
   return $namaFileBaru;
 }

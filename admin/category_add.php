@@ -1,6 +1,22 @@
 <?php 
+    session_start();
     include ('../header.php');
     require ('../functions.php');
+    $category = query("SELECT * FROM category");
+
+    if(isset($_POST['add'])){
+        if(tambah($_POST) > 0){
+            echo "<script>
+                    alert('Data Berhasil Ditambahkan');
+                    document.location.href = 'category_manager.php';
+                </script>";
+    } else {
+        echo "<script>
+                    alert('Data Gagal Ditambahkan');
+                    document.location.href = 'category_manager.php';
+                </script>";
+    }
+}
 
  ?>
 <!DOCTYPE html>
@@ -34,7 +50,7 @@
                     <div class="title text-center mb-3 pt-4 text-white">
                         <h3 class="font-weight bolder">Add Category</h3>
                     </div>
-                    <form action="category_manager_backend.php" class="m-auto bold-txt text-white" method="post" enctype="multipart/form-data">
+                    <form action="" class="m-auto bold-txt text-white" method="post" enctype="multipart/form-data">
                         
                         <div class="form-group pt-5">
                             <label for="name">Title</label>

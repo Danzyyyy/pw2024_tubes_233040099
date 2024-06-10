@@ -1,24 +1,26 @@
 <?php 
+session_start();
     include ('includes/header.php');
-    include ('includes/functions.php');
+    include ('../functions.php');
     $games = query('SELECT * FROM games');
+
+   //sorting
+   if(isset($_POST["sort"])){
+      if($_POST["sort"] === "old"){
+      $games = query("SELECT * FROM games ORDER BY id ASC");
+      }
+      if($_POST["sort"] === "new"){
+      $games = query("SELECT * FROM games ORDER BY id DESC");
+      }
+   }
+   //akhir sorting
 
  ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Demo</title>
-   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-      
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script> -->
-        
-    <style>
-
-
-    </style>
-
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
     
@@ -28,6 +30,17 @@
 
         <div class="row justify-content-center pt-3 ">
             <h2 class="text-center pb-3 pt-3 text-white">Games</h2>
+            <form action="" method="POST" class="mt-5">
+            <select id="sort" name="sort" onchange="this.form.submit();">
+               <?php if($_POST["sort"] === "old") : ?>
+               <option value="new">NEW</option>
+               <option value="old" selected>OLD</option>
+               <?php else : ?>
+               <option value="new" selected>NEW</option>
+               <option value="old">OLD</option>
+               <?php endif ; ?>
+               </select>
+            </form>
                 <?php
                         foreach ($games as $gm) {?>
                             <div class="col-lg-4 pb-4">
@@ -44,7 +57,7 @@
     </div>
  <!-- if session is set the Category Manageer button will be shown -->
  <?php
-            if (isset($_SESSION['username'])){
+            if (isset($_SESSION['login'])){
                 echo '<div class="text-center pt-5 pb-3"><a class="btn btn-warning btn-lg" href="games_manager.php">Games Manager</a></div>';
                 echo '<div class="text-center"><a class="mt-3 mb-3 btn btn-success btn-lg" href="Games_add_form.php">Add Game</a></div>';
 
@@ -55,12 +68,11 @@
     
 
 
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script> -->
 
 
 <!-- Footer Added -->
 <?php 
-    require ('includes/footer.php');
+    require ('../footer.php');
  ?>
 
 </body>

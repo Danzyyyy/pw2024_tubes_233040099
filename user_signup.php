@@ -158,7 +158,7 @@ label {
                         <form action="" method="post">
                             <div class="form-group">
                                 <label class="form-control-label">FULLNAME</label>
-                                <input type="text" name="fullname" class="form-control">
+                                <input type="text" name="full_name" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label class="form-control-label">USERNAME</label>
@@ -166,11 +166,11 @@ label {
                             </div>
                             <div class="form-group">
                                 <label class="form-control-label">PASSWORD</label>
-                                <input type="password" name="password" class="form-control">
+                                <input type="password" name="password1" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label class="form-control-label">CONFIRM PASSWORD</label>
-                                <input type="password" name="repeat_password" class="form-control">
+                                <input type="password" name="password2" class="form-control">
                             </div>
                             <div class="col-lg-12 loginbttm">
                                 <div class="col-lg-6 login-btm login-button pt-2" style="margin-left: 30px;">

@@ -1,17 +1,15 @@
 <?php 
-    include ('../header.php');
+    session_start();
+    include ('includes/header.php');
     require ('../functions.php');
     $category = query('SELECT * FROM category ;');
  ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Demo</title>
-   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-      
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script> -->
       
     
     <style>
@@ -32,7 +30,7 @@
                         foreach ($category as $ctg) {?>
                             <div class="col-lg-4 pb-4">
                                <div class="card bg-dark text-white" style="border: black 100px;">
-                               <img class="card-img-top" src="../asset/img/game/<?= $ctg['image'] ?>" alt="" style="width: 100%; height:350px;">
+                               <img class="card-img-top" src="../asset/img/game/<?= $ctg['image'] ?>" alt="image" style="width: 100%; height:350px;">
                                   <div class="card-body">
                                      <h3 class="card-title text-center"><?= " $ctg[title] "; ?></h3>
                                      <h5 class="card-title">Active: <?php if ($ctg['active'] == 'true') {
@@ -45,7 +43,7 @@
                                         <!-- update button sends category id with the url -->
                                       <a href="category_update_form.php?id=<?= $ctg['id']; ?>"><button type="button" class="btn btn-warning m-1">Update Category</button></a>
                                       <!-- delete button sends category id and title with the url -->
-                                      <a href="category_manager_backend.php?id=<?= $ctg['id']; ?>&action=delete"><button type="button" name="delete" class="btn btn-danger">Delete Category</button></a>
+                                      <a href="category_del.php?id=<?= $ctg['id']; ?>&action=delete"><button type="button" name="delete" class="btn btn-danger">Delete Category</button></a>
                                     </div>
                                   </div>
                                </div>

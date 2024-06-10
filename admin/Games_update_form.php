@@ -1,7 +1,21 @@
 <?php 
+session_start();
     include ('includes/header.php');
-    require ('includes/functions.php');
+    require ('../functions.php');
 
+    if (isset($_POST['update'])){
+        if(update_games($_POST)>0){
+            echo "<script>
+                    alert('Data Berhasil Diubah');
+                    document.location.href = 'games_manager.php';
+                </script>";
+        } else {
+            echo "<script>
+                    alert('Data Gagal Diubah');
+                    document.location.href = 'games_manager.php';
+                </script>";
+        }
+    }
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,7 +54,7 @@
                     <div class="title text-center mb-3 pt-4 text-white">
                         <h3 class="font-weight bolder">Update Game</h3>
                     </div>
-                    <form action="Games_manager_backend.php" class="m-auto bold-txt text-white" method="post" enctype="multipart/form-data">
+                    <form action="" class="m-auto bold-txt text-white" method="post" enctype="multipart/form-data">
                         <?php
                     $sql= "SELECT * FROM games WHERE id ='$_GET[id]';";
                     $result = mysqli_query($conn, $sql); 
@@ -50,9 +64,10 @@
                             <label for="title">Title</label>
                             <input type="text" class="form-control" name="title" id="title" value="<?php echo $games['title']; ?>">
                         </div>
-                        <input type="text" name="game_id" value="<?php echo $_GET['id']; ?>" hidden>
+                        <input type="text" name="id" value="<?php echo $_GET['id']; ?>" hidden>
                         <div class="form-group pt-5">
                             <label for="image">Update Image: </label>
+                            <input type="hidden" name="old_image" value="<?= $games['image']; ?>">
                              <input type="file" class="form-control-file" id="image" name="image" required>
                         </div>
 
@@ -112,7 +127,7 @@
 
 <!-- Footer Added -->
 <?php 
-    include ('includes/footer.php');
+    include ('../footer.php');
  ?>
 
 </body>

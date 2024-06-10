@@ -1,7 +1,22 @@
 <?php 
+    session_start();
     include ('includes/header.php');
-    require ('includes/functions.php');
+    require ('../functions.php');
     $category = query('SELECT * FROM category ;')[0];
+
+    if (isset($_POST['update'])){
+        if(update($_POST)>0){
+            echo "<script>
+                    alert('Data Berhasil Diubah');
+                    document.location.href = 'category_manager.php';
+                </script>";
+        } else {
+            echo "<script>
+                    alert('Data Gagal Diubah');
+                    document.location.href = 'category_manager.php';
+                </script>";
+        }
+    }
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,17 +55,18 @@
                     <div class="title text-center mb-3 pt-4 text-white">
                         <h3 class="font-weight bolder">Category Update</h3>
                     </div>
-                    <form action="category_manager_backend.php" class="m-auto bold-txt text-white" method="post" enctype="multipart/form-data">
+                    <form action="" class="m-auto bold-txt text-white" method="post" enctype="multipart/form-data">
                         <div class="form-group pt-5">
                             <label for="title">Title</label>
                             <input type="text" class="form-control" name="title" id="title" value="<?= $category['title']; ?>">
                             <input type="text" class="form-control" name="oldtitle" value="<?= $category['title']; ?>" hidden>
                         </div>
 
-                        <input type="text" name="category_id" value="<?= $_GET['id']; ?>" hidden>
-
+                        <input type="text" name="id" value="<?= $_GET['id']; ?>" hidden>
+                        
                         <div class="form-group pt-5">
                             <label for="image">Update Category Image: </label>
+                            <input type="hidden" name="old_image" value="<?= $category['image']; ?>">
                              <input type="file" class="form-control-file" id="image" name="image" required>
                         </div>
 

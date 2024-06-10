@@ -25,7 +25,7 @@
     <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #61478f;">
        
         <a href="" class="navbar-brand">
-            <img src="asset/img/logo_tmw.png" alt="logo" style= "width: 70px; height: 100%; padding-left: 20px;">
+            <img src="../asset/img/logo_tmw.png" alt="logo" style= "width: 70px; height: 100%; padding-left: 20px;">
         </a>
          <div class="col-lg-3">
             <h3 class="text-white mr-5"></h3>
@@ -36,9 +36,9 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
            
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active"><a class="nav-link" href="index.php">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="category.php">Category</a></li>
-                <li class="nav-item"><a class="nav-link" href="Games.php">Games</a></li>
+                <li class="nav-item active"><a class="nav-link" href="#">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Category</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Games</a></li>
                 <li class="nav-item">
                     <?php if (isset($_SESSION['login'])) : ?>
                     <a class="nav-link" href="../logout.php">Logout</a></li>
