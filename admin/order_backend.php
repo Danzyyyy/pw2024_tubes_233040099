@@ -1,5 +1,5 @@
 <?php 
-	include "functions.php";
+	include "includes/functions.php";
 	//insertion of an order but with the status "pending"
 if (isset($_POST['submit'])) {
 	$name = $_POST['name'];
@@ -23,12 +23,12 @@ if (isset($_POST['submit'])) {
 		mysqli_stmt_execute($stmt);
 		mysqli_stmt_close($stmt);
 
-		header("location: index.php");
+		header("location: ../index.php");
 		exit();
 	}
 
 
-	//confirming the pending orders
+	//confirming the pending ordrs
 if (isset($_GET['id'])) {
 	$id= intval($_GET['id']);
 	$title = $_GET['title'];

@@ -1,6 +1,6 @@
 <?php 
-    include ('header.php');
-    require ('functions.php');
+    include ('../header.php');
+    require ('../functions.php');
 
  ?>
 <!DOCTYPE html>
@@ -85,7 +85,7 @@
 
 <!-- Footer Added  -->
 <?php 
-    include ('footer.php');
+    include ('../footer.php');
  ?>
 
 </body>

@@ -1,4 +1,5 @@
 <?php
+session_start();
 require 'functions.php';
 $games = query("SELECT * FROM games");
 ?>
@@ -12,7 +13,6 @@ $games = query("SELECT * FROM games");
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
     
     <link rel="stylesheet" href="css/responsive.css">
-    <!-- <link rel="stylesheet" href="css/search.css"> -->
     <link rel="stylesheet" href="css/font.css">
   </head>
   <body>
@@ -101,8 +101,7 @@ $games = query("SELECT * FROM games");
               <?php foreach ($games as $game) : ?>
                 <div class="col-lg-2 col-sm-4 col-4 mt-4">
                     <img src="asset/img/game/<?= $game['image'] ?>" style="height: 170px; width:100%; border-radius: 12px;" >
-                    <h5 class="mt-2"><?= $game['title']?></h5>
-                    <h2 class="mt-2"><?= $game['price']?> Rupiah</h2>
+                    <h2 class="mt-2"><?= $game['title']?></h2>
                     <a href="order_form.php?title=<?= $game['title'] ?>&price=<?= $game['price'] ?>" class="btn" style="background-color:#cc462b"><i class="bi bi-cart"></i>Browse</a>
                 </div>
                 <?php endforeach; ?>

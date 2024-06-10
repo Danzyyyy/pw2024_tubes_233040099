@@ -153,16 +153,16 @@ label {
             <div class="col-lg-6 col-md-8 login-box">
               
                 <div class="col-lg-12 login-title">
-                    UPDATE ADMIN PASSWORD 
+                    UPDATE PASSWORD 
                     <div class="text-center pt-5 text-danger ">
                 <h3><!-- catche error -->
                     <?php 
                     if (isset($_GET["error"])) {
-                        if ($_GET["error"]== "passwardMissMatch") {
-                            echo 'Confirm Passward does not match!!!';
+                        if ($_GET["error"]== "passwordMissMatch") {
+                            echo 'Confirm Password does not match!!!';
                         }
                         elseif ($_GET["error"]== "wrongpassword") {
-                            echo 'Passward does not match!!!';
+                            echo 'Password does not match!!!';
                         }
                     }
 

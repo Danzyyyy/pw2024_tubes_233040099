@@ -13,6 +13,10 @@
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
       
     
+    <style>
+
+
+    </style>
 
 </head>
 <body>
@@ -36,13 +40,11 @@
                 <li class="nav-item"><a class="nav-link" href="category.php">Category</a></li>
                 <li class="nav-item"><a class="nav-link" href="Games.php">Games</a></li>
                 <li class="nav-item">
-                    <?php if (isset($_SESSION['login']) && $_SESSION['login'] == true) :?>
-                    <a class="nav-link" href="logout.php">Logout</a>
-                    <?php else :?>
-                    <a class="nav-link" href="user_login.php">Login</a>
-                    <?php endif;?>
-                </li>
-
+                    <?php if (isset($_SESSION['login'])) : ?>
+                    <a class="nav-link" href="../logout.php">Logout</a></li>
+                    <?php else : ?>
+                    <a class="nav-link" href="../user_login.php">Login</a></li>
+                    <?php endif; ?>
             </ul>
 		</div>
        
@@ -57,6 +59,7 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
 
 </body>
 </html>

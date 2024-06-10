@@ -9,7 +9,7 @@
 		$confirmpassword = $_POST['confirmpassword'];
 //checking passward error-->
 	if (passwardMatch($newpassword,$confirmpassword) == false) {
- 		header("location: Admin_update.php?error=passwardMissMatch");
+ 		header("location: Admin_update.php?error=passwordMissMatch");
  		exit();
  	}
 

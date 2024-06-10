@@ -1,111 +1,50 @@
-<?php 
-    include ('header.php');
-    require ('functions.php');
- ?>
+<?php
+  require 'functions.php';
+
+  
+  // if(isset($_SESSION['login'])) {
+  // }
+  
+  // if($role != 'admin') {
+  //   header("location: index.php");
+  // }
+
+  // $username = $_SESSION['username'];
+  // $id = $_SESSION['id'];
+  // $role = query("SELECT role FROM admins WHERE id = $id")[0]['role'];
+
+?>
+
 <!DOCTYPE html>
-<html lang="en">
-<body>
-
-    
-    <div class="container-fluid bg-dark" style="padding-bottom: 100px;">
-        <div class="team-table bg-dark text-warning">
-         <div class="title text-center mb-1">
-             <h3 class= "font-weight bolder py-5">Pending Orders</h3>
-         </div>
-     
-     <!-- Pending Order Table -->
-     <table class="table table-bordered text-center text-white">
-         <thead class="thead">
-             <tr>
-     
-                 <th>ID</th>
-                 <th>Name</th>
-                 <th>Email</th>
-                 <th>Address</th> 
-                 <th>Phone</th>
-                 <th>Game</th>
-                 <th>Order Date</th>
-                 <th>Total Price</th>
-                 <th>Action</th>
-             </tr>
-         </thead>
-         <tbody>
-            <?php
-                    $sql= 'SELECT * FROM orders where status ="pending"';
-                    $result = mysqli_query($conn, $sql); 
-
-                        while ($orders = mysqli_fetch_array($result)) {?>
-                        <tr>
-                            <td class="p-3"><?= "$orders[id]"; ?></td>
-                            <td class="p-3"><?= "$orders[customer_name]"; ?></td>
-                            <td class="p-3"><?= "$orders[customer_email]"; ?></td>
-                            <td class="p-3"><?= "$orders[customer_address]"; ?></td>
-                            <td class="p-3"><?= "$orders[customer_phone]"; ?></td>
-                            <td class="p-3"><?= "$orders[game]"; ?></td>
-                            <td class="p-3"><?= "$orders[order_date]"; ?></td>
-                            <td class="p-3"><?= "$orders[total_price]"; ?> Rupiah</td>
-                            <td class="float-left">
-                            <a class="btn btn-success" href="order_backend.php?id=<?= $orders['id']; ?> & title=<?= $orders['game']; ?>">Confirm Order</a>
-                             </td>
-                        </tr>
-                <?php 
-                    } 
-                ?>
-         </tbody>
-     </table>
-
-
-   <div class="pt-5 mb-5">
-   <div class="title text-center mb-1">
-             <h3 class= "font-weight bolder py-5">Confirm Orders</h3>
-         </div>
-
-         <!-- Confirm Order Table -->
-     <table class="table table-bordered text-center text-white">
-         <thead class="thead">
-             <tr>
-                 <th>ID</th>
-                 <th>Name</th>
-                 <th>Email</th>
-                 <th>Address</th> 
-                 <th>Phone</th>
-                 <th>Game</th>
-                 <th>Order Date</th>
-                 <th>Total Price</th>
-             </tr>
-         </thead>
-         <tbody>
-            
-         <?php
-                     $sql= 'SELECT * FROM orders where status ="confirm"';
-                     $result = mysqli_query($conn, $sql); 
-
-                        while ($orders = mysqli_fetch_array($result)) {?>
-                        <tr>
-                            <td class="p-3"><?= "$orders[id]"; ?></td>
-                            <td class="p-3"><?= "$orders[customer_name]"; ?></td>
-                            <td class="p-3"><?= "$orders[customer_email]"; ?></td>
-                            <td class="p-3"><?= "$orders[customer_address]"; ?></td>
-                            <td class="p-3"><?= "$orders[customer_phone]"; ?></td>
-                            <td class="p-3"><?= "$orders[game]"; ?></td>
-                            <td class="p-3"><?= "$orders[order_date]"; ?></td>
-                            <td class="p-3"><?= "$orders[total_price]"; ?> Rupiah</td>
-                        </tr>
-                <?php 
-                    } 
-                ?>
-         </tbody>
-     </table>
-        </div>
-    </div>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Admin Dashboard | TMW Store</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  </head>
+  <body>
+    <?php require 'header.php' ?>
+    <input type="checkbox" id="check">
+    <label for="check">
+      <i class="fas fa-bars" id="btn"></i>
+      <i class="fas fa-times" id="cancel"></i>
+    </label>
+    <div class="sidebar">
+    <header>Halo <?= $_SESSION["username"] ?></header>
+  <ul>
+    <li><a href="#"><i class="fas fa-qrcode"></i>Manage User</a></li>
+    <li><a href="#"><i class="fas fa-link"></i>Categories</a></li>
+    <li><a href="#"><i class="fas fa-stream"></i>Product</a></li>
+    <li><a href="#"><i class="fas fa-calendar-week"></i>Order Management</a></li>
+  </ul>
 </div>
+<div class="right default">
+      <h1>Welcome <?= $_SESSION['username']; ?></h1>
+     
+ <section>
 
+ </section>
 
-<!-- Footer Added -->
-<?php 
-    include ('footer.php');
- ?>
-
-
-</body>
+  </body>
 </html>

@@ -1,35 +1,22 @@
 <?php
-
-function koneksi()
-{
-    return mysqli_connect('localhost', 'root', '', 'pw2024_tubes_233040099');
-}
 $conn = mysqli_connect('localhost', 'root', '', 'pw2024_tubes_233040099');
-if(!$conn){
-    die("Connection Failed:" . mysqli_connect_error());
-}
 
-function query($query)
-{
-// Jalankan koneksi ke database
-$conn = koneksi();
 
-// Query ke tabel mahasiswa
-$result = mysqli_query($conn, $query);
+function query($query){
+    global $conn;
+    $result = mysqli_query($conn, $query);
+    $rows = [];
+    while ($row = mysqli_fetch_assoc($result)) {
+        $rows[] = $row;
+    }
+    return $rows;
 
-// Menyiapkan data mahasiswa
-$rows = [];
-while ($row = mysqli_fetch_assoc($result)) {
-  $rows[] = $row;
-}
-return $rows;
 }
 
 function tambah($data)
 {
 
-  $conn = koneksi();
-
+    global $conn;
   $nama = htmlspecialchars($data['nama']);
   $nim = htmlspecialchars($data['nim']);
   $email = htmlspecialchars($data['email']);
@@ -47,6 +34,36 @@ mysqli_query($conn, $query) or die(mysqli_error($conn));
 
 return mysqli_affected_rows($conn);
 }
+
+function registration($data) {
+    global $conn;
+
+    $full_name = ucwords($data["full_name"]);
+    $username = ucwords(stripslashes($data["username"]));
+    $password1 = mysqli_real_escape_string($conn, $data["password1"]);
+    $password2 = mysqli_real_escape_string($conn, $data["password2"]);
+
+    if($password1 !== $password2) {
+        echo "<script>alert('Konfirmasi password tidak sesuai')</script>";
+        return false;
+    }
+
+    $result = mysqli_query($conn, "SELECT * FROM users WHERE username = '$username'");
+    if(mysqli_fetch_assoc($result)) {
+        echo "<script>alert('Username sudah terpakai')</script>";
+        return false;
+    }
+
+    $password1 = password_hash($password1, PASSWORD_DEFAULT);
+
+    mysqli_query($conn, "INSERT INTO users(full_name, username, password) VALUES ('$full_name', '$username', '$password1')");
+
+    return mysqli_affected_rows($conn);
+}
+
+
+
+
 
 
 function upload() {
@@ -94,48 +111,13 @@ function upload() {
   return $namaFileBaru;
 }
 
-function passwardMatch($password, $repeat_password) { //password and confirm password matching check
-	// $result
-
-	if ($password == $repeat_password) {
-		$result = true;
-	}
-
-	else {
-		$result = false; 
-	}
-	return $result;
-}
-
-function usernameexist($connection, $username) { // checking the user exist or not
-	$sql = 'SELECT * FROM admins WHERE username = ?;';
-	$stmt = mysqli_stmt_init($connection);
-	if (!mysqli_stmt_prepare($stmt,$sql)) {
-		header("location: signup.php?error=stmtfailed01 ");
- 		exit();
-	}
-	mysqli_stmt_bind_param($stmt, "s" , $username);
-	mysqli_stmt_execute($stmt);
-
-	$resultdata = mysqli_stmt_get_result($stmt);
-
-	if ($row = mysqli_fetch_assoc($resultdata)) {
-		return $row;
-	}
-	else{
-		$result = false;
-		return $result; //returning the users row
-	}
-
-}
-
 function useridexist($connection, $userid) { //checking if the user id is taken before or not 
-	$sql = 'SELECT id FROM admins ;';
+	$sql = 'SELECT id FROM users ;';
 	$result = mysqli_query($connection, $sql);  
 	$temp = 0;            
 
-	while ($admin = mysqli_fetch_array($result)) {
-		if ($admin['id']==$userid) {
+	while ($user = mysqli_fetch_array($result)) {
+		if ($user['id']==$userid) {
 			$temp=1;
 		}
 	}
@@ -145,4 +127,35 @@ function useridexist($connection, $userid) { //checking if the user id is taken 
 	else{
 		return false;
 	}
+}
+
+function login($data){
+    global $conn;
+    $username = $data['username'];
+    $password = $data['password'];
+    $result = mysqli_query($conn, "SELECT * FROM users WHERE username = '$username'");
+
+    if(mysqli_num_rows($result)) {
+        $row = mysqli_fetch_assoc($result);
+        if(password_verify($password, $row['password'])) {
+
+            $role = query("SELECT role FROM users WHERE username = '$username'")[0]['role'];
+            $_SESSION['login'] = true;
+            $_SESSION['username'] = $username;
+
+            if($role == 'admin') {
+                $_SESSION['role'] = 'admin';
+                header("Location: admin/admin.php");
+                exit;
+            } else {
+                $_SESSION['role'] = 'user';
+                header("Location: index.php");
+                exit;
+            }
+        }
+    }
+    return [
+        'error' => true,
+        'message' => 'Username or password is wrong!'
+    ];
 }

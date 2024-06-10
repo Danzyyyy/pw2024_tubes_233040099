@@ -1,14 +1,9 @@
-<?php
-$orders = query("SELECT * FROM orders");
-?>
+<?php 
+    include ('includes/header.php');
+    require ('includes/functions.php');
+ ?>
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    </head>
 <body>
 
     
@@ -38,8 +33,8 @@ $orders = query("SELECT * FROM orders");
             <?php
                     $sql= 'SELECT * FROM orders where status ="pending"';
                     $result = mysqli_query($conn, $sql); 
+
                         while ($orders = mysqli_fetch_array($result)) {?>
-                        
                         <tr>
                             <td class="p-3"><?= "$orders[id]"; ?></td>
                             <td class="p-3"><?= "$orders[customer_name]"; ?></td>
@@ -91,7 +86,7 @@ $orders = query("SELECT * FROM orders");
                             <td class="p-3"><?= "$orders[customer_name]"; ?></td>
                             <td class="p-3"><?= "$orders[customer_email]"; ?></td>
                             <td class="p-3"><?= "$orders[customer_address]"; ?></td>
-                            <td class="p-3">0<?= "$orders[customer_phone]"; ?></td>
+                            <td class="p-3"><?= "$orders[customer_phone]"; ?></td>
                             <td class="p-3"><?= "$orders[game]"; ?></td>
                             <td class="p-3"><?= "$orders[order_date]"; ?></td>
                             <td class="p-3"><?= "$orders[total_price]"; ?> Rupiah</td>
@@ -104,5 +99,13 @@ $orders = query("SELECT * FROM orders");
         </div>
     </div>
 </div>
+
+
+<!-- Footer Added -->
+<?php 
+    include ('includes/footer.php');
+ ?>
+
+
 </body>
 </html>

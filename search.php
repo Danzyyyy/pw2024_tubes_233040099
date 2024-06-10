@@ -37,7 +37,7 @@
                                      <h3 class="card-title text-center"><?= " $games[title] "; ?></h3>
                                      <p><?= " $games[description] "; ?></p>
                                      <h5 class="card-title">Price: <?= " $games[price] "; ?> Rupiah</h5>
-                                     <div class= "text-center pt-4"><a href="order_form.php?id=<?= $games['id']; ?>"><button type="button" class="btn btn-info">Buy Now</button></a></div>
+                                     <div class= "text-center pt-4"><a href="order_form.php?title=<?= $games['title'] ?>&price=<?= $games['price'] ?>"><button type="button" class="btn btn-info">Buy Now</button></a></div>
                                   </div>
                                </div>
                             </div>

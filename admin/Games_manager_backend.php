@@ -1,6 +1,6 @@
 <?php 
-	include "functions.php";
-		//category deletion
+	include "includes/functions.php";
+		//games deletion
 	if ($_GET['action']=="delete") {
 		$deleteid = $_GET['id'];
 		$sql="DELETE FROM games WHERE id = '$deleteid';";
@@ -12,17 +12,17 @@
 	//category insertion
 	if (isset($_POST['add'])) {
 		$title = $_POST['title'];
-		$category = $_POST['category'];
 		$description = $_POST['description'];
 		$price = $_POST['price'];
+		$image = $_FILES['image']['name'];
+		$category = $_POST['category'];
 		$active = $_POST['active'];
 		$exclusive = $_POST['exclusive'];
-		$image = $_FILES['image']['name'];
 		$total_sell = 0;
 		echo $category;
 
-		//sending data using stetment
-		$sql="INSERT INTO games( title, description, price, image, category, total_sell, active, exclusive) VALUES (?,?,?,?,?,?,?,?)";
+		//sending data using statement
+		$sql="INSERT INTO games( title, description, price, image, category_id, total_sell, active, exclusive) VALUES (?,?,?,?,?,?,?,?)";
 			$stmt = mysqli_stmt_init($conn);
 			if (!mysqli_stmt_prepare($stmt, $sql)) { 
 				header("location: Games_manager.php?error=stmtfailedgamesadd");

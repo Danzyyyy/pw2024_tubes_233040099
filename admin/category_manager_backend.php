@@ -1,13 +1,14 @@
 <?php 
-	include "functions.php";
+	include "../functions.php";
 	//category deletion
+
 	if ($_GET['action']=="delete") {
 		$deleteid = $_GET['id'];
 		$delettitle = $_GET['title'];
 		$sql="DELETE FROM category WHERE id = '$deleteid';";
 		$result = mysqli_query($conn, $sql);
 
-        $sql2="DELETE FROM games WHERE category = '$delettitle';";
+        $sql2="DELETE FROM games WHERE category_id = '$delettitle';";
 		$result2 = mysqli_query($conn, $sql2);
 		header("location: category_manager.php");
 		exit();

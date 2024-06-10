@@ -33,7 +33,7 @@
             <!-- shows a particular category game -->
                 <?php
                         $cate = $_GET['cat'];
-                        $sql= "SELECT * FROM games WHERE (category = '$cate' And active = 'true' ); "; 
+                        $sql= "SELECT * FROM games WHERE (category = '$cate' And active = 'true' )[0]; "; 
                         $result = mysqli_query($conn, $sql);
                         while ($games = mysqli_fetch_array($result)) {?>
                             <div class="col-lg-4 pb-4">

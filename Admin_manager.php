@@ -1,6 +1,8 @@
 <?php 
     include ('header.php');
     require ('functions.php');
+    $games = query("SELECT * FROM games");
+    $users = query("SELECT * FROM users");
     $total_sell=0;
  ?>
 <!DOCTYPE html>
@@ -16,7 +18,6 @@
          <div class="title text-center mb-1">
              <h3 class= "font-weight bolder py-5">Admin Manager</h3>
          </div>
-
      <!-- Admin Manager Table -->
      <table class="table table-bordered text-center text-white">
          <thead class="thead">
@@ -29,34 +30,21 @@
              </tr>
          </thead>
          <tbody>
-            <?php
-                    $sql= 'SELECT * FROM admins ';
-                    $result = mysqli_query($conn, $sql); 
-
-                        while ($admins = mysqli_fetch_array($result)) {?>
-                        <tr>
-                            <td class="p-3"><?= "$admins[id]"; ?></td>
-                            <td class="p-3"><?= "$admins[full_name]";?></td>
-                            <td class="p-3"><?= "$admins[username]";?></td>
-                            <td class="float-left">
-                                <a class="btn btn-outline-danger" href="Admin_delete.php?id=<?php echo $admins['id']; ?>">Delete Admin</a>
-                             </td>
-
-                        </tr>
-                    <?php 
-                    } 
-                ?>
-                
-         </tbody>
-     </table>
-
-     
-     <div class="text-center pt-4 m-3">
-    <a class="btn btn-warning" href="Admin_signup.php">Add Admin</a> 
-    <a class="btn btn-warning" href="Admin_update.php">Change Password</a>
-    </div>
-
-    </div>
+                <?php
+                $i = 1;
+                foreach ($users as $usr) : ?>
+                            <tr>
+                                <td class="p-3"><?= $i++ ?></td>
+                                <td class="p-3"><?= "$usr[full_name]";?></td>
+                                <td class="p-3"><?= "$usr[username]";?></td>
+                                <td class="p-3"><?= "$usr[role]";?></td>
+                                <td class="float-left">
+                                    <a class="btn btn-outline-danger" href="User_delete.php?id=<?= $usr['id']; ?>">Delete User</a>
+                                 </td>
+                            </tr>
+                        <?php endforeach;?>
+             </tbody>
+         </table>
 
 
 <div class="pt-3"></div>
@@ -73,19 +61,13 @@
              </tr>
          </thead>
          <tbody>
-            <?php
-                    $sql= 'SELECT * FROM games ';
-                    $result = mysqli_query($conn, $sql); 
-
-                        while ($games = mysqli_fetch_array($result)) {?>
+            <?php foreach ($games as $games) : ?>
                             <tr>
                                 <td class="p-3"><?= "$games[title]"; ?></td>
                                 <td class="p-3"><?= "$games[total_sell]"; ?></td>
                                  <td class="p-3"><?php $sell = $games['total_sell']*$games['price']; $total_sell+=$sell; echo $sell; ?></td>
                             </tr>
-                <?php 
-                    } 
-                ?>
+                <?php endforeach; ?>
          </tbody>
      </table>
 
@@ -99,6 +81,7 @@
                 </div>
    </div> 
 
+<?php  require ('order.php');?>
 
   <!-- Footer Added -->
 <?php 

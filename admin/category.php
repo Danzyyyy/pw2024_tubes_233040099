@@ -1,7 +1,7 @@
 <?php 
-    include ('header.php');
-    include ('functions.php');
-    $games = query('SELECT * FROM games');
+    include ('includes/header.php');
+    include ('includes/functions.php');
+    $category = query('SELECT * FROM category ;');
 
  ?>
 <!DOCTYPE html>
@@ -22,25 +22,32 @@
 </head>
 <body>
     
-   <!-- Games Page -->
+   <!-- Categories Page -->
   <div style="background: #b29dca;">
     <div class="container pb-5" style="background-color: #b29dca;">
 
         <div class="row justify-content-center pt-3 ">
-            <h2 class="text-center pb-3 pt-3 text-white">Games</h2>
+            <h2 class="text-center pb-3 pt-3 text-white">Categories</h2>
                 <?php
-                        foreach ($games as $gm) {?>
+                        foreach ($category as $ctg) {?>
                             <div class="col-lg-4 pb-4">
                                <div class="card text-white" style="border: black 100px; background-color: #61446c;">
-                                  <img class="card-img-top" src="asset/img/game/<?= $gm['image'] ?>" alt="" style="width: 100%; height:350px;">
+                                  <img class="card-img-top" src="../asset/img/game/<?= $ctg['image'] ?>" alt="" style="width: 100%; height:350px;">
                                   <div class="card-body">
-                                     <h3 class="card-title text-center"><?=  $gm['title'] ?></h3>
-                                     <div class= "text-center pt-2 pb-1"><a href="subcategory.php?id=<?= $gm['id'] ?>"><button type="button" class="btn btn-info">Browse</button></a></div>
+                                     <h3 class="card-title text-center"><?= " $ctg[title] "; ?></h3>
+                                     <div class= "text-center pt-2 pb-1"><a href="subcategory.php?id=<?= $ctg['id'] ?>"><button type="button" class="btn btn-info">Browse</button></a></div>
                                   </div>
                                </div>
                             </div>  
                         <?php } ?>
          </div>
+         <!-- if session is set the Category Manageer button will be shown -->
+        <?php
+            if (isset($_SESSION['username'])){
+                echo '<div class="text-center pt-5 pb-3"><a class="btn btn-warning btn-lg" href="category_manager.php">Category Manager</a></div>';
+                  
+        }?>
+              
     </div>
  </div>
     
@@ -51,7 +58,7 @@
 
 <!-- Footer Added -->
 <?php 
-    require ('footer.php');
+    require ('includes/footer.php');
  ?>
 
 </body>

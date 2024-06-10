@@ -1,6 +1,6 @@
 <?php 
-    include ('header.php');
-    require ('functions.php');
+    include ('../header.php');
+    require ('../functions.php');
     $category = query('SELECT * FROM category ;');
  ?>
 <!DOCTYPE html>
@@ -32,7 +32,7 @@
                         foreach ($category as $ctg) {?>
                             <div class="col-lg-4 pb-4">
                                <div class="card bg-dark text-white" style="border: black 100px;">
-                               <img class="card-img-top" src="asset/img/game/<?= $ctg['image'] ?>" alt="" style="width: 100%; height:350px;">
+                               <img class="card-img-top" src="../asset/img/game/<?= $ctg['image'] ?>" alt="" style="width: 100%; height:350px;">
                                   <div class="card-body">
                                      <h3 class="card-title text-center"><?= " $ctg[title] "; ?></h3>
                                      <h5 class="card-title">Active: <?php if ($ctg['active'] == 'true') {
@@ -41,18 +41,17 @@
                                      <h5 class="card-title">Featured: <?php if ($ctg['featured'] == 'true') {
                                          echo 'Yes';
                                      }else{echo 'NO';} ?></h5>
-
                                      <div class= "text-center pt-5">
                                         <!-- update button sends category id with the url -->
                                       <a href="category_update_form.php?id=<?= $ctg['id']; ?>"><button type="button" class="btn btn-warning m-1">Update Category</button></a>
                                       <!-- delete button sends category id and title with the url -->
-                                      <a href="category_manager_backend.php?id=<?= $ctg['id']; ?>&action=delete&title=<?= $ctg['title']; ?>"><button type="button" name="delete" class="btn btn-danger">Delete Category</button></a>
+                                      <a href="category_manager_backend.php?id=<?= $ctg['id']; ?>&action=delete"><button type="button" name="delete" class="btn btn-danger">Delete Category</button></a>
                                     </div>
                                   </div>
                                </div>
                             </div>
                         <?php } ?>
-                        <div class="text-center"><a class="mt-3 mb-3 btn btn-success btn-lg" href="category_add_form.php">Add Category</a></div>
+                        <div class="text-center"><a class="mt-3 mb-3 btn btn-success btn-lg" href="category_add.php">Add Category</a></div>
          </div>
     </div>
  </div>
@@ -65,7 +64,7 @@
 
 <!-- Footer Added -->
 <?php 
-    include ('footer.php');
+    include ('../footer.php');
  ?>
 
 </body>
