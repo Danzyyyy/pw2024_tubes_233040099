@@ -90,6 +90,9 @@ function update_games($data)
 
     $id = $data['id'];
     $title = htmlspecialchars ($data['title']);
+    $description = htmlspecialchars ($data['description']);
+    $category_id = $data['category_id'];
+    $price = $data['price'];
     $active = $data['active'];
     $exclusive = $data['exclusive'];
     $old_image = $data['old_image'];
@@ -102,6 +105,9 @@ function update_games($data)
     
       $query="UPDATE games SET
                 title ='$title', 
+                description ='$description',
+                price ='$price',
+                category_id ='$category_id',
                 active ='$active', 
                 exclusive ='$exclusive', 
                 image ='$image'

@@ -1,4 +1,5 @@
 <?php
+session_start();
 require '../functions.php';
 require 'includes/header.php';
 
@@ -19,39 +20,43 @@ $games = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM games"));
 <body style="background-color: #b29dca;">
   <h2>Hallo admin</h2>
   <section class="home">
-<div class="row row-cols-1 row-cols-md-3 g-4">
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">Categories</h5>
-    <p class="card-text">Klik link untuk mengedit dan menambah kategori.</p>
-    <a href="category.php" class="btn btn-primary">Check Details</a>
-  </div>
-</div>
 
-    <div class="card" >
-      <div class="card-body">
-        <h5 class="card-title">Games</h5>
-        <p class="card-text">Klik link untuk mengedit dan menambah games.</p>
-        <a href="Games.php" class="btn btn-primary">Check Details</a>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Categories</h5>
+          <p class="card-text">Klik link untuk mengedit dan menambah kategori.</p>
+          <a href="category.php" class="btn btn-primary">Check Details</a>
       </div>
     </div>
-    <div class="card" style="width: 18rem;">
-      <div class="card-body" style="width: 18rem;">
-        <h5 class="card-title">Order Management</h5>
-        <p class="card-text">Klik link untuk melihat orderan.</p>
-        <a href="order.php" class="btn btn-primary">Check Details</a>
+
+      <div class="card" >
+        <div class="card-body">
+          <h5 class="card-title">Games</h5>
+          <p class="card-text">Klik link untuk mengedit dan menambah games.</p>
+          <a href="Games.php" class="btn btn-primary">Check Details</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Order Management</h5>
+          <p class="card-text">Klik link untuk melihat orderan.</p>
+          <a href="order.php" class="btn1 btn btn-primary">Check Details</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">User Management</h5>
+          <p class="card-text">Klik link untuk melihat user.</p>
+          <a href="admin_manager.php" class="btn1 btn btn-primary">Check Details</a>
+        </div>
       </div>
     </div>
-    <div class="card" style="width: 18rem;">
-      <div class="card-body" style="width: 18rem;">
-        <h5 class="card-title">Order Management</h5>
-        <p class="card-text">Klik link untuk melihat orderan.</p>
-        <a href="order.php" class="btn btn-primary">Check Details</a>
-      </div>
-    </div>
-  </div>
-  </div>
-</div>
+
+  <!-- </div> -->
+  <!-- </div> -->
 </section>
 
 <?php require 'includes/footer.php';?>

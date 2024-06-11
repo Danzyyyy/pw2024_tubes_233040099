@@ -28,7 +28,7 @@ if (isset($_POST['submit'])) {
 	}
 
 
-	//confirming the pending ordrs
+	//confirming the pending orders
 if (isset($_GET['id'])) {
 	$id= intval($_GET['id']);
 	$title = $_GET['title'];

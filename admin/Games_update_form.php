@@ -66,6 +66,20 @@ session_start();
                         </div>
                         <input type="text" name="id" value="<?php echo $_GET['id']; ?>" hidden>
                         <div class="form-group pt-5">
+                             <label class="my-1 mr-2" for="category">Category</label>
+                             <select class="custom-select my-1 mr-sm-2" id="category" name="category_id">
+                             <option selected>Choose...</option>
+                             <!-- shows the category that are available in the category list -->
+                             <?php
+                                $sql= 'SELECT * FROM category WHERE active = "true";';
+                                $result = mysqli_query($conn, $sql); 
+
+                                while ($category = mysqli_fetch_array($result)) {?>
+                             <option value="<?php echo $category['id']; ?>"><?php echo " $category[title] "; ?></option>
+                             <?php } ?>
+                        </select>
+                        </div> 
+                        <div class="form-group pt-5">
                             <label for="image">Update Image: </label>
                             <input type="hidden" name="old_image" value="<?= $games['image']; ?>">
                              <input type="file" class="form-control-file" id="image" name="image" required>
@@ -106,13 +120,12 @@ session_start();
                             </div>
                         </div>
 
-                        <?php }?> 
-            
-                </div>
-
                         <div class="form-group text-center pt-5 bold-txt">
                             <button type="submit" name="update" class="frm-btn btn btn-warning text-center"> Confirm </button>
                         </div>
+                        <?php }?> 
+            
+                </div>
                     </form>
                 </div>
             </div>
@@ -127,7 +140,7 @@ session_start();
 
 <!-- Footer Added -->
 <?php 
-    include ('../footer.php');
+    include ('includes/footer.php');
  ?>
 
 </body>

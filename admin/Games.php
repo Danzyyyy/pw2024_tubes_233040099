@@ -21,6 +21,7 @@ session_start();
 <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 </head>
 <body>
     
@@ -48,7 +49,9 @@ session_start();
                                   <img class="card-img-top" src="../asset/img/game/<?= $gm['image'] ?>" alt="" style="width: 100%; height:350px;">
                                   <div class="card-body">
                                      <h3 class="card-title text-center"><?=  $gm['title'] ?></h3>
-                                     <div class= "text-center pt-2 pb-1"><a href="subcategory.php?id=<?= $gm['id'] ?>"><button type="button" class="btn btn-info">Browse</button></a></div>
+                                     <p><?= $gm['description'] ?></p>
+                                     <h4>Rp<?= $gm['price'] ?></h4>
+                                     <div class= "text-center pt-2 pb-1"><a href="../order_form.php?title=<?= $gm['title'] ?>&price=<?= $gm['price'] ?>"><button type="button" class="btn btn-info">Browse</button></a></div>
                                   </div>
                                </div>
                             </div>  
@@ -72,7 +75,7 @@ session_start();
 
 <!-- Footer Added -->
 <?php 
-    require ('../footer.php');
+    require ('includes/footer.php');
  ?>
 
 </body>

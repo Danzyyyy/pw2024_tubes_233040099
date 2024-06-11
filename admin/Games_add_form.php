@@ -64,7 +64,7 @@ session_start();
 
                         <div class="form-group pt-5">
                              <label class="my-1 mr-2" for="category">Category</label>
-                             <select class="custom-select my-1 mr-sm-2" id="category" name="category_id">
+                             <select class="custom-select my-1 mr-sm-2" id="category" name="category_id" required>
                              <option selected>Choose...</option>
                              <!-- shows the category that are available in the category list -->
                              <?php
@@ -80,12 +80,12 @@ session_start();
 
                         <div class="form-group pt-5">
                             <label for="image">Enter Image</label>
-                             <input type="file" class="form-control-file" id="image" name="image">
+                             <input type="file" class="form-control-file" id="image" name="image" required>
                         </div>
 
                         <div class="form-group pt-5">
                             <label for="description">Description</label>
-                            <input type="text" class="form-control" id="description" name="description">
+                            <input type="text" class="form-control" id="description" name="description" required>
                         </div>
 
                         <div class="form-group pt-5">

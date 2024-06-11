@@ -1,6 +1,6 @@
 <?php 
 session_start();
-    include ('../header.php');
+    include ('includes/header.php');
     require ('../functions.php');
     $games = query('SELECT * FROM games ;');
  ?>
@@ -10,12 +10,10 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Demo</title>
+    <!-- <link rel="stylesheet" href="../css/table.css"> -->
+    <link rel="stylesheet" href="../css/table.css">
       
     
-    <style>
-
-
-    </style>
 
 </head>
 <body>
@@ -33,6 +31,8 @@ session_start();
                                <img class="card-img-top" src="../asset/img/game/<?= $gm['image'] ?>" alt="image" style="width: 100%; height:350px;">
                                   <div class="card-body">
                                      <h3 class="card-title text-center"><?= " $gm[title] "; ?></h3>
+                                        <p><?= " $gm[description] "; ?></p>
+                                     <h5 class="card-title text-center">Rp<?= " $gm[price] "; ?></h5>
                                      <h5 class="card-title">Active: <?php if ($gm['active'] == 'true') {
                                          echo 'Yes';
                                      }else{echo 'NO';} ?></h5>
@@ -62,7 +62,7 @@ session_start();
 
 <!-- Footer Added -->
 <?php 
-    include ('../footer.php');
+    include ('includes/footer.php');
  ?>
 
 </body>

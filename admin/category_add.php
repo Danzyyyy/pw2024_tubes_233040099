@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    include ('../header.php');
+    include ('includes/header.php');
     require ('../functions.php');
     $category = query("SELECT * FROM category");
 
@@ -101,7 +101,7 @@
 
 <!-- Footer Added  -->
 <?php 
-    include ('../footer.php');
+    include ('includes/footer.php');
  ?>
 
 </body>

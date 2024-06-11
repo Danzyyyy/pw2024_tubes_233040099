@@ -1,5 +1,5 @@
 <?php 
-	include "functions.php";
+	include "../functions.php";
 	//geting the user id from admin by Get method
 	$deleteid = $_GET['id'];
 	if (useridexist($conn, $deleteid)) { //if the user id exist or not

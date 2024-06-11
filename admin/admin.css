@@ -1,12 +1,32 @@
+body {
+  overflow-x: hidden;
+}
 
 .home {
   height: 50vh;
 }
 
-
+.row {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 
 .card {
-  margin: 0 auto;
-  float: none;
-  top: 5vh;
+  width: 288px;
+  height: 190px;
+}
+
+h5, p {
+  text-align: center;
+}
+
+.btn {
+  margin-left: 60px;
+  margin-top: 10px;
+}
+
+.btn1 {
+  margin-top: 30px;
+}
 }
